@@ -61,7 +61,9 @@
     <Compile Include="frmShow.Designer.cs">
       <DependentUpon>frmShow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generator\Class1.cs" />
     <Compile Include="Generator\crud.cs" />
+    <Compile Include="Generator\javascript.cs" />
     <Compile Include="Generator\parameters.cs" />
     <Compile Include="Generator\setget.cs" />
     <Compile Include="ItEasyTools.cs">

@@ -35,6 +35,8 @@ namespace LibItEasyUtility.Controllers
                     case "int":
                     case "tinyint":
                         rw.TypeNameConvert = "Int32";
+                        rw.HTML_Mask = ".m_numero";
+                        rw.HTML_Type = "Number";
                         break;
 
                     case "numeric":
@@ -44,6 +46,8 @@ namespace LibItEasyUtility.Controllers
                     case "float":
                     case "real":
                         rw.TypeNameConvert = "double";
+                        rw.HTML_Mask = ".msk_decimal";
+                        rw.HTML_Type = "Number";
                         break;
                     case "date":
                     case "datetime2":
@@ -51,6 +55,8 @@ namespace LibItEasyUtility.Controllers
                     case "datetime":
                     case "time":
                         rw.TypeNameConvert = "DateTime";
+                        rw.HTML_Mask = ".msk_date";
+                        rw.HTML_Type = "date";
                         break;
 
                     case "uniqueidentifier":
@@ -63,15 +69,19 @@ namespace LibItEasyUtility.Controllers
                     case "binary":
                     case "varbinary":
                         rw.TypeNameConvert = "string";
+                        rw.HTML_Mask = ".msk_text";
+                        rw.HTML_Type = "Text";
                         break;
                     case "imagem":
                         rw.TypeNameConvert = "image";
+                        rw.HTML_Type = "img";
                         break;
                 }
 
                 if (rw.ColumnOwner.Equals(""))
                 {
                     rw.ColumnOwner = rw.name.ToString();
+                    rw.HTML_Id= rw.name.ToString();
                 }
             }
             return obj;

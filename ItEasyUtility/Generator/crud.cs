@@ -9,7 +9,7 @@ namespace ItEasyUtility.Generator
 {
     public class crud
     {
-        public string criarcrud(List<ColumnsModels> lst, string table)
+        public string criarcrud(List<ColumnsModels> lst, string table,string mynamespace)
         {
             StringBuilder sb = new StringBuilder();
             string concat = "";
@@ -19,20 +19,20 @@ namespace ItEasyUtility.Generator
 
             sb.Append("\r\n");
             sb.Append("using System.Data.SqlClient;\r\n");
-            sb.Append("using <localização da sua Models>;\r\n");
-            sb.Append("using <localização da sua Controllers>;\r\n");
+            sb.Append($"using {mynamespace}.Models;\r\n");
+            sb.Append($"using {mynamespace}.Repositories;\r\n");
             sb.Append("\r\n");
 
             sb.Append("private Int32 back=0; \r\n");
             sb.Append("private " + table + "Models objModel = new " + table + "Models(); \r\n");
             sb.Append("private List<" + table + "Models> objLstModel = new List<" + table + "Models>(); \r\n");
-            sb.Append("private " + table + "Controllers objCtrl = new " + table + "Controllers(); \r\n");
+            sb.Append("private " + table + "Repository objCtrl = new " + table + "Repository(); \r\n");
             sb.Append("\r\n");
             /*
              * INSERT
             */
             sb.Append("public Int32 Insert(" + table + "Models obj) { \r\n");
-            sb.AppendFormat("string cmd = string.format(\"INSERT INTO {0}(", table);
+            sb.AppendFormat("string cmd = string.Format(@\"INSERT INTO {0}(", table);
             lst.ForEach(delegate (ColumnsModels rw)
             {
                 ordemstr += ConvertToOrdemByString(rw.TypeNameConvert, ordem);
@@ -59,30 +59,34 @@ namespace ItEasyUtility.Generator
 
             return sb.ToString();
         }
-        string ConvertToString(string TypeNameConvert, string name, Int32 ordem)
+        string[] ConvertToString(string TypeNameConvert, string name, Int32 ordem)
         {
-            string values = "";
+            string[] values = new string[1]; 
             switch (TypeNameConvert)
             {
                 case "Int32":
-                    values += "\r\n obj." + name + ",";
+                    values[0] = "\r\n obj." + name + ",";
+                    values[1] = values[0];
                     break;
 
                 case "double":
-                    values += "\r\n obj." + name + ",";
+                    values[0] = "\r\n obj." + name + ",";
+                    values[1] = values[0];
                     break;
 
                 case "DateTime":
-                    values += "\r\n obj." + name + ",";
+                    values[0] = "\r\n obj." + name + ",";
+                    values[1] += "\r\n 'obj." + (name) + "ToString(\"yyyy-MM-dd hh: mm: ss\")',";
                     break;
 
                 case "string":
                 case "image":
-                    values += "\r\n 'obj." + name + "',";
+                    values[0] = "\r\n 'obj." + name + "',";
+                    values[1] += "\r\n 'obj." + name + ".ToString()',";
                     break;
 
                 default:
-                    values += "\r\n **obj." + name + "**,";
+                    values[0] = "\r\n **obj." + name + "**,";
                     break;
 
             }
@@ -103,16 +107,16 @@ namespace ItEasyUtility.Generator
                     break;
 
                 case "DateTime":
-                    values += "\r\n {" + ordem.ToString() + "},";
+                    values += "\r\n {" + ordem.ToString() + ".ToString(\"yyyy-MM-dd hh: mm: ss\")},";
                     break;
 
                 case "string":
                 case "image":
-                    values += "\r\n '{" + ordem.ToString() + "}',";
+                    values += "\r\n '{" + ordem.ToString() + ".ToString()}',";
                     break;
 
                 default:
-                    values += "\r\n **{" + ordem.ToString() + "}**,";
+                    values += "\r\n **{" + ordem.ToString() + ".ToString()}**,";
                     break;
 
             }

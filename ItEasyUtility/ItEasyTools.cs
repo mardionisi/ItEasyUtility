@@ -98,7 +98,18 @@ namespace ItEasyUtility
             crud pr = new crud();
             //pr.criarcrud(userCols.sListColumns);
             frm.txCabecario.Text = "Crud";
-            frm.txScript.Text = pr.criarcrud(userCols.sListColumns.ToList(), userSearch.LstTables.Text.ToString()).ToString();
+            frm.txScript.Text = pr.criarcrud(userCols.sListColumns.ToList(), userSearch.LstTables.Text.ToString(), txNamespace.Text).ToString();
+            frm.ShowDialog();
+
+        }
+
+        private void btn_js_Click(object sender, EventArgs e)
+        {
+            frmShow frm = new frmShow();
+            javascript pr = new javascript();
+            //pr.criarcrud(userCols.sListColumns);
+            frm.txCabecario.Text = "Crud";
+            frm.txScript.Text = pr.criarjavascript(userCols.sListColumns.ToList(), userSearch.LstTables.Text.ToString(), txNamespace.Text).ToString();
             frm.ShowDialog();
 
         }

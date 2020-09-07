@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItEasyTools));
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.text_directory = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txNamespace = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@
             this.btn_parametros = new System.Windows.Forms.Button();
             this.btn_crud = new System.Windows.Forms.Button();
             this.userMenu1 = new ItEasyUtility.UserControls.UserMenu();
+            this.btn_js = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,12 +61,13 @@
             this.text_directory.Size = new System.Drawing.Size(548, 20);
             this.text_directory.TabIndex = 18;
             // 
-            // textBox1
+            // txNamespace
             // 
-            this.textBox1.Location = new System.Drawing.Point(253, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(447, 20);
-            this.textBox1.TabIndex = 17;
+            this.txNamespace.Location = new System.Drawing.Point(253, 54);
+            this.txNamespace.Name = "txNamespace";
+            this.txNamespace.Size = new System.Drawing.Size(447, 20);
+            this.txNamespace.TabIndex = 17;
+            this.txNamespace.Text = "Webmotors_ADM";
             // 
             // label3
             // 
@@ -173,11 +175,23 @@
             this.userMenu1.Size = new System.Drawing.Size(538, 22);
             this.userMenu1.TabIndex = 23;
             // 
+            // btn_js
+            // 
+            this.btn_js.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_js.Location = new System.Drawing.Point(900, 117);
+            this.btn_js.Name = "btn_js";
+            this.btn_js.Size = new System.Drawing.Size(96, 23);
+            this.btn_js.TabIndex = 27;
+            this.btn_js.Text = "JAVASCRIPT";
+            this.btn_js.UseVisualStyleBackColor = true;
+            this.btn_js.Click += new System.EventHandler(this.btn_js_Click);
+            // 
             // ItEasyTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1270, 565);
+            this.ClientSize = new System.Drawing.Size(1311, 565);
+            this.Controls.Add(this.btn_js);
             this.Controls.Add(this.btn_crud);
             this.Controls.Add(this.btn_parametros);
             this.Controls.Add(this.btn_propriedade);
@@ -186,7 +200,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.text_directory);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txNamespace);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -206,7 +220,7 @@
         #endregion
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.TextBox text_directory;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txNamespace;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -218,5 +232,6 @@
         private System.Windows.Forms.Button btn_propriedade;
         private System.Windows.Forms.Button btn_parametros;
         private System.Windows.Forms.Button btn_crud;
+        private System.Windows.Forms.Button btn_js;
     }
 }

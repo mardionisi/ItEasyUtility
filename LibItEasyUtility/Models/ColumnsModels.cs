@@ -22,5 +22,10 @@ namespace LibItEasyUtility.Models
         public Int32 scale { set; get; }
         public string collation_name { set; get; }
         public Int32 is_nullable { set; get; }
+
+        public string HTML_Type { set; get; }
+        public string HTML_input { set; get; }
+        public string HTML_Mask { set; get; }
+        public string HTML_Id { set; get; }
     }
 }
