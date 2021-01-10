@@ -14,9 +14,9 @@ namespace LibItEasyUtility.Controllers
             string cmd = $@"SELECT  ty.name as TypeName,
                                 tab.name as TableName, col.object_id, col.name, col.column_id, col.system_type_id, col.user_type_id, col.max_length, col.precision, 
                                 col.scale, col.collation_name, col.is_nullable,'' as ColumnOwner
-                                FROM {VarLib.Var.objDatabaseSelected.name}.sys.columns col
-                                INNER JOIN {VarLib.Var.objDatabaseSelected.name}.sys.tables tab ON tab.object_id = col.object_id                                 
-								INNER JOIN {VarLib.Var.objDatabaseSelected.name}.sys.types ty ON ty.user_type_id = col.system_type_id
+                                FROM [{VarLib.Var.objDatabaseSelected.name}].sys.columns col
+                                INNER JOIN [{VarLib.Var.objDatabaseSelected.name}].sys.tables tab ON tab.object_id = col.object_id                                 
+								INNER JOIN [{VarLib.Var.objDatabaseSelected.name}].sys.types ty ON ty.user_type_id = col.system_type_id
                                 WHERE col.object_id = { VarLib.Var.objTablesSelected.object_id}";
   
             return ConvertTypesToCSharp(GetList<ColumnsModels>(cmd));

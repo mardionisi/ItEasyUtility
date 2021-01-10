@@ -6,7 +6,8 @@ using System.Data.SqlClient;
 using ItAdoConn.Models;
 using Dapper;
 using System.Data;
-
+using System.Windows;
+using System.Windows.Forms;
 namespace ItAdoConn.Data
 {
     public class ConnDapper
@@ -44,11 +45,18 @@ namespace ItAdoConn.Data
         }
         public static dynamic Get<T>(string cmd)
         {
-
-            conexaoBD = new SqlConnection(ItVarSqL.objConexaoSelected);
-
-
-            return conexaoBD.Query<T>(cmd);
+            IEnumerable<T> back = null;
+            try
+            {
+                conexaoBD = new SqlConnection(ItVarSqL.objConexaoSelected);
+                return conexaoBD.Query<T>(cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;               
+            }
+            return back;
+            
         }
         public static dynamic Query(string cmd)
         {
@@ -59,5 +67,4 @@ namespace ItAdoConn.Data
             return conexaoBD.Query(cmd);
         }
     }
-} 
-   
+}

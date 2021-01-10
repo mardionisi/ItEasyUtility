@@ -104,6 +104,9 @@ namespace LibItEasyUtility.UserControls
             {
                 if (((DataBasesModels)LstDatabase.SelectedItem).database_id != "-1")
                 {
+                    try
+                    {
+
                     VarLib.Var.objDatabaseSelected = LstDatabase.SelectedItem as DataBasesModels;
                     sLstTables = VarLib.Var.objListTables;
                     sLstTables.Insert(0, new TablesModels
@@ -116,6 +119,13 @@ namespace LibItEasyUtility.UserControls
                     LstTables.ValueMember = "object_id";
                     LstTables.DataSource = sLstTables;
                     LstTables.SelectedIndex = 0;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString(), VarLib.Var.LibCaption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                      
+                    }
+                    
                 }
                 else
                 {

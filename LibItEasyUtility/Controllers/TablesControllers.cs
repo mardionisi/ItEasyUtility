@@ -12,7 +12,7 @@ namespace LibItEasyUtility.Controllers
     {
         public List<TablesModels> GetListView()
         {
-            string cmd = string.Format(@"SELECT name, object_id FROM {0}.sys.Tables WHERE Type='U' ORDER BY name",VarLib.Var.objDatabaseSelected.name);
+            string cmd = string.Format(@"SELECT name, object_id FROM [{0}].sys.Tables WHERE Type='U' ORDER BY name",VarLib.Var.objDatabaseSelected.name);
             return GetList<TablesModels>(cmd);
         }
     }
